@@ -8,6 +8,7 @@ spring:
       auto-commit: false
   data:
     redis:
+      host: redis_1
       port: 6379
   jpa:
     hibernate:
