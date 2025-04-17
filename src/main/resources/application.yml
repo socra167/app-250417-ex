@@ -16,6 +16,9 @@ spring:
   jackson:
     serialization:
       fail-on-empty-beans: false
+  data:
+    redis:
+      port: 36379
   datasource:
     url: jdbc:h2:./db_dev;MODE=MySQL
     username: sa
