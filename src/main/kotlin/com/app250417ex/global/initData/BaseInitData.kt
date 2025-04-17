@@ -3,6 +3,7 @@ package com.app250417ex.global.initData
 import com.app250417ex.domain.post.post.service.PostService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.ApplicationRunner
+import org.springframework.cache.annotation.Cacheable
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Lazy
@@ -28,5 +29,18 @@ class BaseInitData(
 
         postService.write("제목 1", "내용 1")
         postService.write("제목 2", "내용 2")
+
+        self.get1Plus1()
+        self.get1Plus1()
+        self.get1Plus1()
+    }
+
+    /*
+     * Embedded Redis가 잘 동작한다면 1번만 출력되고, Redis에 저장되어야 한다.
+     */
+    @Cacheable("get1Plus1")
+    fun get1Plus1(): Int {
+        println("get1Plus1 run!")
+        return 1 + 1
     }
 }
