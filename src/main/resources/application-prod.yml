@@ -10,6 +10,7 @@ spring:
     redis:
       host: redis_1
       port: 6379
+      password: "${custom.prod.redis.password}"
   jpa:
     hibernate:
       ddl-auto: update
